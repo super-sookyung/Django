@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+<script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+{% endblock %}
+
+{% block bodycontent %}
+
+<body>
+	<div class="card  mb-4">
+		<div class="card-title" >
+		  <li class="newpost">New Post</li>
+			<li class="author mb-1">Author : {{request.user.slug_name_for_url}}</li>
+		</div>
+		<div class="card-body">
+			{% if messages %}
+		    <ul classssss="messages">
+	    	{% for message in messages %}
+	        <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ message }}
+	        </div>
+	    	{% endfor %}
+		    </ul>
+			{% endif %} 
+		    <form action="{% url 'posts:create' %}" method="post" class="GeneralPost-form">
+			{% csrf_token %}
+	        {{form.title}}
+	        <small id="title-help" class="form-text text-muted ml-2"> 
+	        Required. 50 characters or fewer.</small>
+	        <br>
+	        {{form.media}}
+	    	{{form.content}}
+	    	<br>
+	    	<br>
+	    	{{form.tag}}
+	    	<small id="tag-help" class="form-text text-muted ml-2">NO more than 10 tags.</small>
+	    	<br>    
+	 		<button type="submit" value="submit" name="save">Save</button>
+	        <button type="submit" value="submit" name="publish">Publish</button>
+	    	</form>
+	    </div>
+	</div>
+</body>
+<script>
+    CKEDITOR.replace( 'editor1');
+</script>
+
+{% endblock %}
+
+
+

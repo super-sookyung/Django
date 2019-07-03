@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}SogangDjango SNS Landing Page{% endblock %}
+
+{% block bodycontent %}
+
+{% load static %}
+
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+</head>
+
+
+<body>
+  <div class="card body">
+	<div class="card-header text-white pt-4 ">
+	  <h1 class="d-flex justify-content-center align-items-center ">{{ post.title }}</h1>
+	    <p class="author pr-3"> 
+	      <a href="{% url 'posts:author_post_list' author_slugname=post.author.slug_name_for_url %}">
+	      Author : {{ post.author.slug_name_for_url}}</a>
+	    </p>
+	</div>
+	<div class="container m1-2">
+	  <p class="card-text mt-4 ml-4 ">
+	  	{% autoescape off %}
+	  	{{ post.content }}
+	  	{% endautoescape %}
+	  </p>
+	</div>
+	  <div class="d-flex align-content-center ">
+	    {% for tag in tags %}
+	  <div class="tags mt-1 ml-4 ">
+	    <a href="{% url 'posts:tag_related_post_list' tag_slug=tag.filter_tag.slug %}"> 
+	    #{{ tag.filter_tag.name }}</a>
+	  </div>    
+	    {% endfor %}
+  </div>
+    <span class="control hidden">
+	   <div class="plus">
+	     {% if request.user.id == post.author_id %}
+	     <form action="{% url 'posts:delete' post_id=post.id %}" method="POST">
+           <a href="{% url 'posts:edit' post_id=post.id %}" class='btn btn-info' role="button">edit </a>
+           {% csrf_token %}
+           {{ delete_form.as_p }}
+           <button type="submit" value="submit" class='btn btn-info' name="delete">Delete</button>
+	     </form>
+	       {% else %}
+  	       {% endif %}
+ 	   </div>
+    </span>
+      <div class="card-footer d-flex justify-content-end align-items-center">
+	    <small class ="text-secondary" > created: {{ post.created }} | last edited: {{ post.last_edited }}</small>
+	  </div>
+  </div>
+</body>
+<script>
+</script>
+
+{% endblock %}

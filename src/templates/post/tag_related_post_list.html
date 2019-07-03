@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/tag_related_post.css' %}">
+</head>
+
+
+<body>
+  <div class="row">
+      {% for post in related_published_post %}
+    <div class="container col-6 mb-4 ml-0 p-1">
+      <div class="card border-info ml-1">
+          <h1 class="card-title" >
+            <a href="{% url 'posts:detail' post_id=post.id %}" >
+            {{ post.title }}</a>
+          </h1>
+        <div class="card-footer d-flex justify-content-end align-items-center">
+          <small class="text-secondary " > {{ post.created }} </small>
+        </div>
+      </div>  
+    </div>
+      {% endfor %}
+  </div>
+  <div class="pagination">
+    <span class="step-links">
+      {% if related_published_post.has_previous %}
+      <a href="?page={{ related_published_post.previous_page_number }}">previous</a>
+      {% endif %}
+      <span class="current"> Page {{ related_published_post.number }} of {{ related_published_post.paginator.num_pages }}.</span>
+      {% if related_published_post.has_next %}
+      <a href="?page={{ related_published_post.next_page_number }}">next</a>
+      {% endif %}
+    </span>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+

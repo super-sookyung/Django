@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}SogangDjango SNS Landing Page{% endblock %}
+{% block css %}
+<link href="{% static 'css/landing.css' %}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+
+
+{% block bodycontent %}
+<div class="header">
+	<div class="container">
+		<div class="row">
+		<!-- <div class="header-content-wrapper"> -->
+			<!-- <div class="col-lg-1 col-md-12 col-sm-12 col-12"></div>
+			<div class="col-lg-10 col-md-12 col-sm-12 col-12"> -->
+			<div class="main-header">
+				<img src= "{% static 'img/row-background4.png' %}" alt="programming">
+			</div>
+			<!-- </div> -->
+			<!-- <div class="col-lg-1 col-md-12 col-sm-12 col-12"></div> -->
+		</div>
+	</div>
+</div>
+
+<div class="container projects">
+	<div class="row projects">
+		<div class="col-5 out">
+			<div class="row">
+				<div class="col-7" onclick="location.href='{% url 'auth:register' %}'">
+					<div class="row no1">
+						<div class="project-number">1</div>
+					</div>
+				</div>
+				<div class="col-5 in" onclick="location.href='#'">
+					<div class="row no1">
+						<div class="project-number">2</div>
+					</div>
+				</div>
+			</div>
+			<div class="row no3" onclick="location.href='#'">
+				<div class="project-number">3</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="row no4" onclick="location.href='#'">
+				<div class="project-number">4</div>
+			</div>
+			<div class="row no5" onclick="location.href='#'">
+				<div class="project-number">5</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="row no6" onclick="location.href='#'">
+				<div class="project-number">6</div>
+			</div>
+			<div class="row no7" onclick="location.href='#'">
+				<div class="project-number">7</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <section class="blog-post-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+				<div class="ui-block">-->
+
+					<!-- Post -->
+					
+					<!--<article class="hentry blog-post">
+						<a href="#" class="h4 post-title">Here’s the Featured Urban photo of August! </a>
+						<p>Here’s a photo from last month’s photoshoot. We got really awesome shots for the new catalog.</p>
+
+						<div class="author-date">
+							by
+							<a class="h6 post__author-name fn" href="#">Maddy Simmons</a>
+							<div class="post__date">
+								<time class="published" datetime="2017-03-24T18:18">
+									- 7 hours ago
+								</time>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			 ... end Post -->
+
+
+
+
+{% endblock %} 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/author_post_list.css' %}">
+</head>
+
+
+<body>
+  <div class="row">
+      {% for post in author_posts %}
+    <div class="container col-6 mb-4 ml-0 p-1">
+      <div class="card border-info ml-1">
+          <h1 class="card-title" >
+            <a href="{% url 'posts:detail' post_id=post.id %}" >{{ post.title }}</a>
+          </h1>
+        <div class="card-footer d-flex justify-content-end align-items-center">
+          <small class="text-secondary " > {{ post.created }} </small>
+        </div>
+      </div>  
+    </div>
+      {% endfor %}
+  </div>
+  <div class="pagination">
+      <span class="step-links">
+        {% if author_posts.has_previous %}
+        <a href="?page={{ author_posts.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current"> Page {{ author_posts.number }} of {{ author_posts.paginator.num_pages }}.</span>
+        {% if author_posts.has_next %}
+        <a href="?page={{ author_posts.next_page_number }}">next</a>
+        {% endif %}
+      </span>
+  </div>     
+{% endblock %}
+

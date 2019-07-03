@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% block title %}SogangDjango SNS Landing Page{% endblock %}
+
+{% block bodycontent %}
+
+{% load static %}
+
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+</head>
+
+
+<body>
+  <div class="row">
+      {% for post in posts %}
+    <div class="container col-6 mb-4 ml-0 p-1">
+      <div class="card border-info ml-1">
+          <h1 class="card-title" >
+            <a href="{% url 'posts:detail' post_id=post.id %}" >{{ post.title }}</a>
+          </h1>
+        <div class="card-footer d-flex justify-content-end align-items-center">
+          <small class="text-secondary " > {{ post.created }} </small>
+        </div>
+      </div>  
+    </div>
+      {% endfor %}
+  </div>
+  <div class="pagination">
+    <span class="step-links">
+      {% if posts.has_previous %}
+      <a href="?page={{ posts.previous_page_number }}">previous</a>
+      {% endif %}
+      <span class="current"> Page {{ posts.number }} of {{ posts.paginator.num_pages }}.</span>
+      {% if posts.has_next %}
+      <a href="?page={{ posts.next_page_number }}">next</a>
+      {% endif %}
+    </span>
+  </div>
+      <a href="{% url 'posts:user_post_list'  %}"><button type="submit" name="save">my posts</button></a>  
+  </div>
+  <br>
+  <br>
+  
+{% endblock %}
+
+
+
+   
+
+
+>>>>>>> 8265418965ca1bb376ed19e13b80cba97650a78f

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}SogangDjango SNS Landing Page{% endblock %}
+{% block css %}
+<link href="{% static 'css/about.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block bodycontent %}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1 col-md-12 col-sm-12 col-12"></div>
+		<div class="col-lg-10 col-md-12 col-sm-12 col-12">
+			<div class="heading">
+				<h2>Welcome to Team Sogang Django's<p>Social Network Service Project!</h2>
+			</div>
+
+			<div class="middle-column-content">
+				<div class="content-introduction">
+				<h3> About our project </h3>
+				<p> Our intention was to create a mock up SNS website which has similar functionalities of facebook but something much much less. <br>
+				We said, "why don't we try make something a bit challenging for ourselves?" That's how it begun, learning Django, Bootstrap, and Javascript.</p>
+				</div class="content-list">
+				<h3> Our project has implemented following functionalities </h3>
+				<h6> Basic Authentication </h6>
+				<h6> Profile page with photos </h6>
+				<h6> Email, Phone Number Registration </h6>
+				<h6> Posts with CKEditor </h6>
+				<h6> Tag Support with Posts </h6>
+				<h6> Following Relationships </h6>
+				<h6> Newsfeed creations according to following relationships </h6>
+			</div>
+
+			<div class="go-tos">
+				<a href="{% url 'home' %}" type="button" class="btn btn-lg btn-block"> Go Check Out Our Project! </a>
+
+			</div>
+
+			</div>
+		</div>
+		<div class="col-lg-1 col-md-12 col-sm-12 col-12"></div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %} 

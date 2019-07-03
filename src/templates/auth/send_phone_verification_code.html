@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block bodycontent %}
+
+<div class="mt-5">
+  <div class="row">
+    <div class="col col-lg-4 col-md-12 col-sm-12"></div>  
+    <div class="col col-lg-4 col-md-12 col-sm-12">  
+          <div class="text-center">
+            <h4>Enter phone number to receive verification code</h4>
+          </div>
+          <div>
+            <form id="phone_number_send" action="{% url 'auth:auth_phone_send_verification_code' %}" method="POST" name="phone_only">
+              {% csrf_token %}
+              {% include 'snippets/widget_tweak_form.html' with form=auth_phone_only_form %}
+              <button type="submit" class="btn btn-primary btn-block">Ask for Verification Code</button>
+            </form>
+          </div>  
+    </div>
+    <div class="col col-lg-2 col-md-12 col-sm-12"></div>  
+  </div>
+
+</div>
+
+{% endblock %}

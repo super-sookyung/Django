@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+
+<head> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+<script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+{% endblock %}
+
+{% block bodycontent %}
+
+<body>
+	<div class="card  mb-4">
+		<div class="card-title" >
+		  <li class="newpost">Profile</li>
+			<li class="author mb-1">Author : {{request.user.slug_name_for_url}}</li>
+		</div>
+		<div class="card-body">
+			<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	        {{form.as_p}
+	        <br>
+	 		<button type="submit" value="submit" name="save">Save</button>
+	 	</form>
+	    	</form>
+	    </div>
+	</div>
+</body>
+
+{% endblock %}
+
+
+

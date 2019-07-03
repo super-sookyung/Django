@@ -1,0 +1,24 @@
+<!DOCTYPE Html>
+<html>
+
+<body>
+  <h2>Sign up</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Verifying with phone number</h3>
+
+          <p>Enter your phone number and verification code</p>
+          <form id="phone_verification" method="POST" action="{% url 'auth:auth_phone_verify_code' %}" name="phone_verification">
+            {% csrf_token %}
+            {{ auth_phone_verification_form.as_p }}
+            <button type="submit" value="Reset" class="btn btn-primary btn-block">Verify</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

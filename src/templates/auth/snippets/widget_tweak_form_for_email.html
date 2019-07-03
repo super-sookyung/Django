@@ -1,0 +1,42 @@
+ {% load widget_tweaks %}
+  
+
+<div id="email-verification-send-div">
+  <form id="email-verification-send-form" action="{% url 'auth_api:email_password_reset_api' %}" method="post" role="form">    
+    {% csrf_token %}
+
+    {% for hidden_field in password_reset_form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+  <div class="form-group"> 
+    <div id="email-verification-send-form-group-div">
+      {{ password_reset_form.email.label_tag }}
+
+      {% if password_reset_form.is_bound %}
+        {% if password_reset_form.email.errors %}
+          {% render_field password_reset_form.email class="form-control is-invalid email-verification-send-email-field" %}
+          {% for error in password_reset_form.email.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field password_reset_form.email class="form-control is-valid email-verification-send-email-field" %}
+        {% endif %}
+      {% else %}
+        {% render_field password_reset_form.email class="form-control email-verification-send-email-field" placeholder="example@example.com"%}
+      {% endif %}
+
+      {% if password_reset_form.email.help_text %}
+        <small class="form-text text-muted">{{ password_reset_form.email.help_text | safe }}</small>
+      {% endif %}
+    </div>
+  </div>
+
+  <div>
+    <button id="send-password-reset-link-button" class="btn btn-primary btn-lg btn-block" type="submit" name="send-email-password-reset-link">Get Password Reset Link</button>
+  </div>
+
+</form>
+</div>

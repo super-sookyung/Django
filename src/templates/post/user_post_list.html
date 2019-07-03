@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+<head> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_post_list.css' %}">
+</head>
+
+  <p><button class="btn btn-warning " type="button" data-toggle="collapse" 
+      data-target="#collapseExample" aria-expanded="false" 
+      aria-controls="collapseExample">Saved Posts</button> </p>
+  <div class="collapse" id="collapseExample" role="button">
+	  <div class="row">
+	    {% for post in user_saved_posts %}
+	      <div class="container col-6 mb-4 ml-0 p-1">
+	        <div class="card ml-2 border-warning ">
+	         <h1 class="card-title" ><a href="{% url 'posts:detail' post_id=post.id %}" >{{ post.title }}</a></h1>
+	          <div class="a"><div class="card-footer d-flex justify-content-end align-items-center">
+	            <small class="text-secondary " > {{ post.created }} </small></div>
+	          </div>
+	        </div>  
+	      </div>
+      {% endfor %}
+	  </div>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if user_saved_posts.has_previous %}
+        <a href="?page={{ user_saved_posts.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current"> Page {{ user_saved_posts.number }} of {{ user_saved_posts.paginator.num_pages }}.</span>
+        {% if user_saved_posts.has_next %}
+        <a href="?page={{ user_saved_posts.next_page_number }}">next</a>
+        {% endif %}
+      </span>
+    </div>
+    <br>
+  </div>
+
+
+  <p><button class="btn btn-info" type="button" data-toggle="collapse" 
+     data-target="#ollapseExample" aria-expanded="true" 
+     aria-controls="collapseExample">Published posts</button></p>
+  <div class="collapse show" id="ollapseExample" role="button">
+  	<div class="row">
+      {% for post in user_published_posts %}
+      <div class="container col-6 mb-4 ml-0 p-1">
+        <div class="card ml-2 border-info">
+          	<h1 class="card-title" ><a href="{% url 'posts:detail' post_id=post.id %}" >{{ post.title }}</a></h1>
+            <div class="b"><div class="card-footer d-flex justify-content-end align-items-center">
+            <small class="text-secondary " > {{ post.created }} </small></div>
+          </div>
+        </div>  
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="pagination">
+      <span class="step-links">
+      {% if user_published_posts.has_previous %}
+      <a href="?page={{ user_published_posts.previous_page_number }}">previous</a>
+      {% endif %}
+      <span class="current"> 
+      Page {{ user_published_posts.number }} of {{ user_published_posts.paginator.num_pages }}
+      </span>
+      {% if user_published_posts.has_next %}
+      <a href="?page={{ user_published_posts.next_page_number }}">next</a>
+      {% endif %}
+      </span>
+    </div>	
+  </div>
+  <br>
+  <br>
+{% endblock %}
+
+
+
+
+
+

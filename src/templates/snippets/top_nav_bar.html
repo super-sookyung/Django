@@ -1,0 +1,24 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+  <a class="navbar-brand" href="{% url 'home' %}">SOGANG PORTFOLIO</a>
+  <ul class="navbar-nav ml-auto">
+    <form class="form-inline my-2 my-lg-0" action="search" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>
+    </form>
+    {% if request.user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'auth:register' %}">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'auth:login' %}">Login</a>
+    </li>
+    {% endif %}
+    </li>
+  </ul>
+</div>
+</nav>

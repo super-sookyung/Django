@@ -1,0 +1,112 @@
+{% load widget_tweaks %}
+
+
+<div id="phone-verification-send-div">
+  <form id="phone-verification-send-form" action="{% url 'auth:auth_phone_send_verification_code' %}" method="post" role="form">
+    {% csrf_token %}
+
+    {% for hidden_field in phone_verification_send_form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+  <div class="form-group"> 
+    <div id="phone-verification-send-form-group-div">
+      {{ phone_verification_send_form.user_phone.label_tag }}
+
+      {% if phone_verification_send_form.is_bound %}
+        {% if phone_verification_send_form.user_phone.errors %}
+          {% render_field phone_verification_send_form.user_phone class="form-control is-invalid phone-verification-send-field" %}
+          {% for error in phone_verification_send_form.user_phone.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field phone_verification_send_form.user_phone class="form-control is-valid phone-verification-send-field" %}
+        {% endif %}
+      {% else %}
+        {% render_field phone_verification_send_form.user_phone class="form-control phone-verification-send-field" placeholder="ex)+82-10-1234-1234"%}
+      {% endif %}
+
+      {% if phone_verification_send_form.user_phone.help_text %}
+        <small class="form-text text-muted">{{ phone_verification_send_form.user_phone.help_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+
+  <div>
+    <button id="send-verification-code-button" class="btn btn-primary btn-lg btn-block" type="submit" name="send-verification-code-request">Send Verification Code</button>
+  </div>
+
+  </form>
+</div>
+
+
+
+<div id="phone-verification-div" class="d-none">
+<form id="phone-verification-form" action="{% url 'auth:auth_phone_verify_code' %}" method="post" role="form">
+
+{% csrf_token %}
+
+{% for hidden_field in phone_verification_form.hidden_fields %}
+  {{ hidden_field }}
+{% endfor %}
+
+<div class="form-group">
+  <div id="phone-verification-form-group-div">
+
+    {{ phone_verification_form.user_phone.label_tag }}
+
+    {% if phone_verification_form.is_bound %}
+      {% if phone_verification_form.user_phone.errors %}
+        {% render_field phone_verification_form.user_phone class="form-control is-invalid phone-verification-phone-field" %}
+        {% for error in phone_verification_form.user_phone.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field phone_verification_form.user_phone class="form-control is-valid phone-verification-phone-field" %}
+      {% endif %}
+    {% else %}
+      {% render_field phone_verification_form.user_phone class="form-control phone-verification-phone-field" %}
+    {% endif %}
+
+    {% if phone_verification_form.user_phone.help_text %}
+      <small class="form-text text-muted">{{ phone_verification_form.user_phone.help_text }}</small>
+    {% endif %}
+
+
+  <div class="form-group" > 
+    {{ phone_verification_form.verification_code.label_tag }}
+
+    {% if phone_verification_form.is_bound %}
+      {% if phone_verification_form.verification_code.errors %}
+        {% render_field phone_verification_form.verification_code class="form-control is-invalid phone-verification-code-field" %}
+        {% for error in phone_verification_form.verification_code.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field phone_verification_form.verification_code class="form-control is-valid phone-verification-code-field" %}
+      {% endif %}
+    {% else %}
+      {% render_field phone_verification_form.verification_code class="form-control phone-verification-code-field" %}
+    {% endif %}
+
+    {% if phone_verification_form.verification_code.help_text %}
+      <small class="form-text text-muted">{{ phone_verification_form.verification_code.help_text }}</small>
+    {% endif %}
+  </div>
+
+</div>
+
+<div>
+  <button id="verify-code-button" class="btn btn-primary btn-lg btn-block" type="submit" name="verify-code">Verify Code</button>
+</form>
+  <button id="send-verification-code-again-button" class="btn btn-primary btn-lg btn-block" type="submit" name="verify">Send Verification Code Again</button>
+</div>
+
+
+</div>

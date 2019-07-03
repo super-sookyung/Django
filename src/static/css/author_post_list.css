@@ -1,0 +1,20 @@
+
+<style >
+
+	.card{
+		width: 95%;
+	}
+	.card-title a{
+		color: #52527a;	
+		font-family: sans-serif;		
+	}
+	.card-title {
+		text-align: center;	
+	}
+	.card-footer{
+		height: 30px;
+		background-color: #d1e0e0;
+	}
+
+
+</style>

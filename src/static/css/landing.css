@@ -1,0 +1,94 @@
+/*css of landing.html*/
+
+.main-header {
+			  margin: 20px auto auto auto;
+			  display: block;
+			}
+
+.container.projects {
+					 margin-top: 70px;
+					 height: 600px;
+					}
+.row.no1 {
+		  margin: 0 auto;
+		  padding-top: 10px;
+}
+
+.col-7 {
+		background-color: #f3bfba;
+		height: 200px;
+		cursor: pointer;
+	}
+
+.col-7:hover {
+			  background-color: #e77e74;
+			}
+
+.col-5.in {
+		background-color: #fff9b0;
+		height: 200px;
+		cursor: pointer;
+	}
+
+.col-5.in:hover {
+			  background-color: #fff361;
+			}
+
+.row.no3 {
+		  background-color: #a6a6a6;
+		  height: 400px;
+		  cursor: pointer;
+
+		}
+
+.row.no3:hover {
+		  background-color: #4c4c4c;
+		}
+
+.row.no4 {
+		  background-color: #c0c0c0;
+		  height: 380px;
+		  cursor: pointer;
+		}
+
+.row.no4:hover {
+		 		background-color: #808080;
+			}
+
+.row.no5 {
+		  background-color: #d2e6f2;
+		  height: 220px;
+		  cursor: pointer;
+		}
+
+.row.no5:hover {
+		  		background-color: #a4cde5;
+		  	}
+
+.row.no6 {
+		  background-color: #758b94;
+		  height: 320px;
+		  cursor: pointer;
+		}
+
+.row.no6:hover {
+		  background-color: #41525b;
+		}
+
+.row.no7 {
+		  background-color: #7acc8f;
+		  height: 280px;
+		  cursor: pointer;
+		}
+
+.row.no7:hover {
+		 		background-color: #5c996b;
+			}
+
+.project-number {
+				 font-family: 'Limelight', cursive;
+				 margin: auto;
+				 font-size: 120px;
+				 color: white;
+
+				}
